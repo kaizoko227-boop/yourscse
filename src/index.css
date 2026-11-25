@@ -1,0 +1,413 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.011em;
+  }
+
+  body {
+    @apply text-slate-900 dark:text-slate-50 transition-colors duration-500;
+    background-color: #e9f2fc;
+    overscroll-behavior-y: none;
+  }
+
+  html.dark body {
+    background-color: #030711;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.025em;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    letter-spacing: -0.01em;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   APPLE iOS 26 & macOS TAHOE — SILK REFRACTIVE WALLPAPER
+   ========================================================= */
+.liquid-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 65% at 8% 10%, rgba(125, 211, 252, 0.52), transparent 55%),
+    radial-gradient(ellipse 68% 60% at 92% 14%, rgba(249, 168, 212, 0.34), transparent 52%),
+    radial-gradient(ellipse 75% 65% at 78% 88%, rgba(94, 234, 212, 0.36), transparent 55%),
+    radial-gradient(ellipse 60% 55% at 14% 88%, rgba(253, 224, 71, 0.22), transparent 50%),
+    linear-gradient(155deg, #f2f7ff 0%, #e7f1fe 48%, #f4effd 100%);
+}
+
+html.dark .liquid-wallpaper {
+  background:
+    radial-gradient(ellipse 78% 62% at 10% 10%, rgba(14, 165, 233, 0.28), transparent 54%),
+    radial-gradient(ellipse 64% 58% at 88% 14%, rgba(192, 132, 252, 0.19), transparent 52%),
+    radial-gradient(ellipse 72% 64% at 80% 88%, rgba(20, 184, 166, 0.22), transparent 55%),
+    radial-gradient(ellipse 60% 54% at 16% 86%, rgba(56, 189, 248, 0.18), transparent 52%),
+    linear-gradient(160deg, #030711 0%, #071226 52%, #090d1c 100%);
+}
+
+.liquid-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(88px);
+  opacity: 0.55;
+  will-change: transform;
+  animation: liquidFloat 24s ease-in-out infinite alternate;
+}
+
+.liquid-orb-1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.45), rgba(14, 165, 233, 0.02));
+}
+
+.liquid-orb-2 {
+  width: 480px;
+  height: 480px;
+  top: 12%;
+  right: -150px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.30), rgba(192, 132, 252, 0.03));
+  animation-delay: -7s;
+  animation-duration: 28s;
+}
+
+.liquid-orb-3 {
+  width: 540px;
+  height: 540px;
+  bottom: -180px;
+  left: 30%;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.34), rgba(14, 165, 233, 0.02));
+  animation-delay: -13s;
+  animation-duration: 26s;
+}
+
+html.dark .liquid-orb {
+  opacity: 0.36;
+}
+
+@keyframes liquidFloat {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(32px, -26px, 0) scale(1.07); }
+  100% { transform: translate3d(-24px, 22px, 0) scale(0.95); }
+}
+
+/* =========================================================
+   OPTICAL LIQUID GLASS SURFACES (LIGHT & DARK)
+   ========================================================= */
+.glass-panel {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.44));
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.92),
+    inset 0 -1px 0 0 rgba(14, 165, 233, 0.08),
+    0 16px 42px -14px rgba(15, 38, 68, 0.14);
+}
+
+html.dark .glass-panel {
+  background: linear-gradient(145deg, rgba(18, 30, 52, 0.64), rgba(10, 18, 34, 0.46));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 0 rgba(56, 189, 248, 0.10),
+    0 20px 48px -14px rgba(0, 0, 0, 0.68);
+}
+
+.os-card {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.76) 0%, rgba(255, 255, 255, 0.46) 100%);
+  backdrop-filter: blur(28px) saturate(195%);
+  -webkit-backdrop-filter: blur(28px) saturate(195%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 1px 0 rgba(14, 165, 233, 0.06),
+    0 12px 34px -14px rgba(15, 38, 68, 0.11),
+    0 2px 6px -2px rgba(15, 38, 68, 0.04);
+  transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.26s ease, border-color 0.26s ease, background 0.26s ease;
+}
+
+.os-card:hover {
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(14, 165, 233, 0.09),
+    0 18px 42px -14px rgba(15, 38, 68, 0.15),
+    0 4px 10px -3px rgba(14, 165, 233, 0.06);
+}
+
+html.dark .os-card {
+  background: linear-gradient(150deg, rgba(20, 34, 58, 0.62) 0%, rgba(10, 19, 36, 0.44) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.22),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 1px 0 rgba(56, 189, 248, 0.07),
+    0 16px 40px -14px rgba(0, 0, 0, 0.62);
+}
+
+html.dark .os-card:hover {
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 1px 0 rgba(56, 189, 248, 0.12),
+    0 22px 48px -14px rgba(0, 0, 0, 0.72);
+}
+
+.os-card-subtle {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.34));
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+html.dark .os-card-subtle {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.os-input {
+  @apply w-full rounded-2xl px-3.5 py-2.5 text-sm text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-400/70 focus:outline-none transition-all;
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  box-shadow:
+    inset 0 1.5px 3px rgba(15, 38, 68, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.os-input:focus {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(14, 165, 233, 0.62);
+  box-shadow: 0 0 0 3.5px rgba(14, 165, 233, 0.16), inset 0 1px 2px rgba(15, 38, 68, 0.04);
+}
+
+html.dark .os-input {
+  background: rgba(12, 22, 40, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.42);
+}
+
+html.dark .os-input:focus {
+  background: rgba(16, 28, 50, 0.78);
+  border-color: rgba(56, 189, 248, 0.62);
+  box-shadow: 0 0 0 3.5px rgba(14, 165, 233, 0.22);
+}
+
+/* Native Apple Liquid Glass Primary Capsule Button */
+.os-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full text-white font-semibold text-sm px-5 py-2.5 transition-all active:scale-[0.96] disabled:opacity-50 disabled:pointer-events-none cursor-pointer;
+  background: linear-gradient(180deg, #19c3e6 0%, #0284c7 100%);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.58),
+    inset 0 -1px 1px rgba(3, 105, 161, 0.35),
+    0 10px 24px -8px rgba(2, 132, 199, 0.56);
+}
+
+.os-btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-0.5px);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.68),
+    0 14px 28px -8px rgba(6, 182, 212, 0.62);
+}
+
+/* Native Apple Liquid Glass Secondary Capsule Button */
+.os-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full text-slate-800 dark:text-slate-100 font-medium text-sm px-4 py-2.5 transition-all active:scale-[0.96] disabled:opacity-50 disabled:pointer-events-none cursor-pointer;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.44));
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.92),
+    0 6px 16px -6px rgba(15, 38, 68, 0.12);
+}
+
+.os-btn-secondary:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
+  transform: translateY(-0.5px);
+}
+
+html.dark .os-btn-secondary {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 8px 20px -6px rgba(0, 0, 0, 0.48);
+}
+
+html.dark .os-btn-secondary:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.10));
+}
+
+.os-btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full hover:bg-white/60 dark:hover:bg-white/[0.1] text-slate-700 dark:text-slate-200 font-medium text-sm px-3.5 py-2 transition-all cursor-pointer;
+}
+
+/* Floating Tahoe Sidebar, iPhone Capsule Dock & Liquid Sheets */
+.liquid-dock {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.48));
+  backdrop-filter: blur(38px) saturate(215%);
+  -webkit-backdrop-filter: blur(38px) saturate(215%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 1px rgba(14, 165, 233, 0.09),
+    0 22px 52px -14px rgba(15, 38, 68, 0.22);
+}
+
+html.dark .liquid-dock {
+  background: linear-gradient(145deg, rgba(18, 32, 56, 0.74), rgba(9, 17, 32, 0.56));
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.26),
+    inset 1px 0 0 rgba(255, 255, 255, 0.09),
+    inset 0 -1px 1px rgba(56, 189, 248, 0.12),
+    0 24px 56px -12px rgba(0, 0, 0, 0.76);
+}
+
+/* High-legibility floating mobile capsule dock */
+.liquid-dock-bar {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(244, 249, 255, 0.93));
+  backdrop-filter: blur(44px) saturate(220%);
+  -webkit-backdrop-filter: blur(44px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 1),
+    0 20px 48px -10px rgba(15, 38, 68, 0.30);
+}
+
+html.dark .liquid-dock-bar {
+  background: linear-gradient(145deg, rgba(16, 28, 50, 0.94), rgba(8, 16, 30, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    0 22px 52px -10px rgba(0, 0, 0, 0.85);
+}
+
+/* iPhone 26 Optical Circular Passcode Key */
+.liquid-key {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.28));
+  backdrop-filter: blur(26px) saturate(200%);
+  -webkit-backdrop-filter: blur(26px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.84);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.92),
+    inset 0 -1px 1px rgba(14, 165, 233, 0.08),
+    0 10px 26px -10px rgba(15, 38, 68, 0.2);
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.liquid-key:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.52));
+  transform: scale(1.03);
+}
+
+.liquid-key:active {
+  transform: scale(0.91);
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.38), rgba(6, 182, 212, 0.2));
+}
+
+html.dark .liquid-key {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.30),
+    0 12px 28px -10px rgba(0, 0, 0, 0.6);
+}
+
+html.dark .liquid-key:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.12));
+  transform: scale(1.03);
+}
+
+html.dark .liquid-key:active {
+  transform: scale(0.91);
+  background: linear-gradient(145deg, rgba(56, 189, 248, 0.36), rgba(6, 182, 212, 0.2));
+}
+
+/* Liquid Glass Recharts Tooltips globally */
+.recharts-default-tooltip {
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(22px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 14px 32px -10px rgba(15, 38, 68, 0.18) !important;
+  padding: 10px 14px !important;
+  color: #0f172a !important;
+}
+
+html.dark .recharts-default-tooltip {
+  background: rgba(13, 24, 44, 0.84) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 18px 38px -10px rgba(0, 0, 0, 0.72) !important;
+  color: #f8fafc !important;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.24);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.44);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.36s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.pb-safe {
+  padding-bottom: max(0.65rem, env(safe-area-inset-bottom));
+}
